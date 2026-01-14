@@ -1,0 +1,214 @@
+:root {
+  --card-background-color: #f3f1f1;
+  --card-heading: #222;
+  --card-desc: #020202;
+  --card-dueCreate: rgb(10, 9, 9);
+  --label-footer: rgb(0, 0, 0);
+  --id: #4a4a4a;
+  --border: #bababa;
+  --radius-normal: 16px;
+  --radius-curve: 20px;
+
+  --main-color: #ffffff;
+  --appNameColor: black;
+  --appDet: #909193;
+  --text-normalColor: black;
+  /* Deep Blue - for headers, nav */
+  --main-color-secondary: #fdfdfd;
+  /* Slightly lighter for hover states or buttons */
+
+  --color-ocean: #3b9aff;
+  /* Primary action button color */
+  --color-ocean-secondary: #468faf;
+  /* Card headers, tags */
+
+  --color-sky: #61a5c2;
+  /* Backgrounds, secondary buttons */
+  --color-sky-secondary: #89c2d9;
+  /* Input borders, light hovers */
+
+  --color-sky-white: #a9d6e5;
+  /* Light background, section separators */
+  --color-sky-white-secondary: #caf0f8;
+  /* Highlight boxes, hover areas */
+
+  --color-light: #f9f9f9;
+  /* Very light background — almost white but blue-tinted */
+  --color-single-note-bg: #ffffff;
+
+  --info-container-bg: #b0b0b03b;
+}
+
+[data-theme='dark'] {
+  --card-background-color: #1a1b1c62;
+  --card-heading: #ffffff;
+  --card-desc: #e9e9e9;
+  --card-dueCreate: rgb(189, 185, 185);
+  --label-footer: rgb(122, 117, 117);
+  --id: #757364;
+  --border: rgb(35, 35, 35);
+  /* Core Backgrounds - using "Elevated" dark grays */
+  --main-color: #121212;
+  /* Deepest background */
+  --main-color-secondary: #1e1e1e;
+  /* Slightly lighter for sections */
+  --color-single-note-bg: #252525;
+  /* Note/Card backgrounds */
+  --color-light: #181818;
+  /* Blue-tinted dark */
+
+  /* Text Colors */
+  --appNameColor: #ffffff;
+  --text-normalColor: #e0e0e0;
+  /* Soft white for better readability */
+  --appDet: #a0a0a0;
+  /* Muted text */
+
+  /* Ocean/Sky Blue Palette - adjusted for Dark Mode saturation */
+  --color-ocean: #4dabff;
+  /* Brighter blue to pop against dark */
+  --color-ocean-secondary: #52b1d6;
+
+  --color-sky: #3d5afe;
+  --color-sky-secondary: #2c3e50;
+
+  --color-sky-white: #2a2d2e;
+  /* Swapped: dark grey with blue tint */
+  --color-sky-white-secondary: #323739;
+
+  /* Status and Containers */
+  --info-container-bg: rgba(255, 255, 255, 0.1);
+  /* Transparent white overlay */
+}
+
+
+.note-card {
+  width: 320px;
+  padding: 16px;
+  margin: 12px;
+  position: relative !important;
+  border-radius: 4px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
+  font-family: system-ui, sans-serif;
+}
+
+.note-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.note-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--card-heading);
+  margin: 0;
+}
+
+.note-id {
+  font-size: xx-small;
+  color: var(--id);
+
+}
+
+.note-desc {
+  font-size: 0.95rem;
+  color: var(--card-desc);
+  line-height: 1.4;
+  margin: 10px 0 14px;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--card-dueCreate);
+}
+
+.label {
+  font-weight: 500;
+  margin-right: 4px;
+  color: var(--label-footer);
+}
+.menu:hover{
+  cursor: pointer;
+}
+.menu:active{
+  background-color: var(--color-ocean-secondary);
+  color: var(--main-color);
+  padding: 1px;
+  border-radius: 4px;
+  
+}
+
+.show{
+  height: fit-content;
+  width: fit-content;
+  right: 32px;
+  overflow-x: hidden;
+  display: flex;
+  z-index: 200;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1px;
+
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  animation-name: formAnim;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  border-radius: 12px;
+}
+
+.show:hover {
+  box-shadow: 0 0 2px var(--color-sky-white);
+}
+
+.hide {
+
+  display: none;
+}
+
+/* Menu wrapper */
+
+/* Menu item button */
+.menu-item {
+  background-color: transparent;
+  backdrop-filter: blur(100px);
+  padding-inline-start: 1px;
+  padding-inline-end: 60px;
+  padding-block: 8px;
+  margin-inline: 0px 1px;
+
+  box-sizing: border-box;
+
+  display: inline-block;
+
+  border: none;
+
+  font-size: 14px;
+  text-align: left;
+  color: var(--text-normalColor);
+  border-radius: inherit;
+  cursor: pointer;
+
+
+}
+
+.menu-item:hover {
+
+  background-color: var(--color-ocean);
+  border-radius: 12px;
+
+}
+
+.danger:hover {
+  background-color: red;
+}

@@ -1,0 +1,655 @@
+* {
+
+
+  border-radius: 8px;
+  box-sizing: border-box;
+  max-width: 98vw;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes formAnim {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+
+
+/* --- 1. Base Container & Layout --- */
+/* We keep layout rules here, but REMOVE animation-name from the ID */
+
+/* --- 2. Animation Trigger Classes --- */
+/* Using !important to ensure these override the default ID styles if any remain */
+
+.form-appear {
+  animation: formIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+.form-gone {
+  animation: formOut 0.01s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  pointer-events: none;
+  /* User can't click during exit */
+}
+
+/* --- 3. Keyframes --- */
+
+@keyframes formIn {
+  0% {
+
+    transform: translateY(10px);
+  }
+
+  100% {
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes formOut {}
+
+:root {
+  --radius-normal: 16px;
+  --radius-curve: 20px;
+
+  --main-color: #ffffff;
+  --appNameColor: black;
+  --appDet: #909193;
+  --text-normalColor: black;
+  /* Deep Blue - for headers, nav */
+  --main-color-secondary: #fdfdfd;
+  /* Slightly lighter for hover states or buttons */
+
+  --color-ocean: #3b9aff;
+  /* Primary action button color */
+  --color-ocean-secondary: #468faf;
+  /* Card headers, tags */
+
+  --color-sky: #61a5c2;
+  /* Backgrounds, secondary buttons */
+  --color-sky-secondary: #89c2d9;
+  /* Input borders, light hovers */
+
+  --color-sky-white: #a9d6e5;
+  /* Light background, section separators */
+  --color-sky-white-secondary: #caf0f8;
+  /* Highlight boxes, hover areas */
+
+  --color-light: #f9f9f9;
+  /* Very light background — almost white but blue-tinted */
+  --color-single-note-bg: #ffffff;
+
+  --info-container-bg: #b0b0b03b;
+}
+
+[data-theme='dark'] {
+  /* Core Backgrounds - using "Elevated" dark grays */
+  --main-color: #121212;
+  /* Deepest background */
+  --main-color-secondary: #1e1e1e;
+  /* Slightly lighter for sections */
+  --color-single-note-bg: #252525;
+  /* Note/Card backgrounds */
+  --color-light: #181818;
+  /* Blue-tinted dark */
+
+  /* Text Colors */
+  --appNameColor: #ffffff;
+  --text-normalColor: #e0e0e0;
+  /* Soft white for better readability */
+  --appDet: #a0a0a0;
+  /* Muted text */
+
+  /* Ocean/Sky Blue Palette - adjusted for Dark Mode saturation */
+  --color-ocean: #4dabff;
+  /* Brighter blue to pop against dark */
+  --color-ocean-secondary: #52b1d6;
+
+  --color-sky: #3d5afe;
+  --color-sky-secondary: #2c3e50;
+
+  --color-sky-white: #2a2d2e;
+  /* Swapped: dark grey with blue tint */
+  --color-sky-white-secondary: #323739;
+
+  /* Status and Containers */
+  --info-container-bg: rgba(255, 255, 255, 0.1);
+  /* Transparent white overlay */
+}
+
+html {
+
+  height: fit-content;
+  width: 97vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-normalColor);
+  background-color: var(--main-color);
+
+}
+
+
+
+/* Header Style */
+
+.alert {
+  z-index: 2000;
+}
+
+#navbar {
+  text-align: center;
+  overflow-x: hidden;
+  z-index: 300px;
+  border-radius: 2px;
+  position: fixed;
+  border: 0.5pt solid var(--main-color);
+  border-style: none;
+  user-select: none;
+  backdrop-filter: blur(3.5px);
+  top: 0;
+  width: 97vw;
+  margin-left: 0.1px;
+  justify-self: center;
+  padding: 2px 15px;
+  overflow-y: visible;
+  box-sizing: border-box;
+  z-index: 320;
+  padding-bottom: 2px;
+
+}
+
+#show-as {
+  justify-self: flex-end;
+  box-shadow: none;
+  text-align: center;
+
+  margin-top: 200px;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+  border: 1pt solid var(--info-container-bg);
+  background-color: var(--info-container-bg);
+  padding: 6px 10px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  top: -184px;
+  z-index: 900;
+
+
+
+}
+
+#show-as:hover {
+  background-color: var(--color-ocean);
+}
+
+#show-as ul {
+  border: 1pt solid var(--color-sky-white);
+  width: fit-content;
+  padding: 10px 2px;
+  width: fit-content;
+  position: fixed;
+  right: 14px;
+  top: 16px;
+  z-index: 900px;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 4px var(--main-color);
+  display: none;
+
+
+}
+
+#show-as ul li:nth-of-type(1):active {
+  background-color: red;
+}
+
+#show-as ul li {
+  text-align: start;
+  list-style: none;
+  padding: 8px;
+  padding-left: 6px;
+  border-radius: 12px;
+  animation-name: formAnim;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+
+}
+li .icon{
+  box-sizing: border-box;
+  padding-top: 1px;
+}
+
+
+#show-as:hover>ul {
+  display: flex;
+  flex-direction: column;
+}
+
+#app-name {
+
+  padding: 0px;
+  text-align: center;
+  font-size: xx-large;
+  color: var(--appNameColor);
+  background: linear-gradient(45deg, rgb(70, 70, 255) 10%, var(--color-ocean), var(--color-sky));
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+#app-det {
+  margin-top: -2px;
+  border-radius: 0px;
+
+  padding-block: 2px;
+  color: var(--appDet);
+  display: block;
+
+}
+
+/* Main Part Styles */
+
+
+.note-title {
+  font-size: small;
+  display: inline-block;
+  text-align: center;
+  background-color: transparent;
+  max-height: 98px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border-radius: 45px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  border-radius: 0px;
+}
+
+.due-date,
+.created-date {
+  font-size: xx-small;
+  font-style: normal;
+  text-align: start;
+  background-color: transparent;
+}
+
+.note .checkbox-container {
+  align-self: start;
+  display: flex;
+
+  background-color: transparent;
+  font-size: x-small;
+  text-align: center;
+}
+
+.note .checkbox-container input {
+  background-color: aqua;
+  text-align: center;
+  cursor: pointer;
+}
+
+.note {
+  /* background: #a62c2c; */
+  padding-inline: 8px;
+  display: flex;
+
+  flex-direction: column;
+
+  margin: 8px;
+  max-height: 80vh;
+  overflow: hidden;
+  min-height: 240px;
+
+  box-sizing: border-box;
+
+  line-break: strict;
+  max-width: 200px;
+  backdrop-filter: blur(2.5);
+  align-items: safe;
+  justify-content: center;
+  border-radius: 4px;
+  padding-bottom: 12px;
+
+  /* background-color: aliceblue; */
+}
+
+.note-desc {
+  padding: 8px;
+  /* height: 20%; */
+  font-size: x-small;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.created-date span {
+  background: #c5fdd1cc;
+
+  border-radius: 89px;
+  padding-inline-end: 14px;
+  padding-inline-start: 7px;
+  margin-left: 8px;
+}
+
+.due-date span {
+  background: #fac9a8d0;
+  padding-inline-start: 7px;
+  border-radius: 89px;
+  padding-inline-end: 14px;
+  margin-left: 8px;
+}
+
+.note-wrapper:hover {
+  border: 1px solid black;
+
+  box-shadow: 0px 0px 4px 0px var(--appDet);
+}
+
+/* Footer Style */
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  justify-self: center;
+}
+
+
+input {
+  background-color: var(--main-color);
+  color: var(--appNameColor);
+  height: fit-content;
+}
+
+#form-container,
+#editor {
+
+  background: transparent;
+  text-align: start !important;
+
+  backdrop-filter: blur(100.5px);
+  width: fit-content;
+  margin-inline: auto;
+  height: 90vh;
+  margin-block: auto;
+  border-radius: 12px;
+  position: fixed;
+  bottom: 4px;
+  box-shadow: 0px 0px 2px #2e2e2e !important;
+  margin: 8px;
+  border: 1px solid var(--color-sky);
+  right: 2px;
+  z-index: 1000;
+  animation-name: formAnim;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#editor {
+  animation: none;
+}
+
+#form-container form,
+#editor form {
+  display: flex;
+
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-container form label,
+#editor form label {
+  text-align: start;
+  justify-self: flex-start;
+  padding-left: 12px;
+  width: 100%;
+}
+
+form input,
+form textarea,
+button {
+  height: fit-content;
+  width: fit-content;
+  max-width: 95vw;
+  min-width: 400px;
+  min-height: 52px;
+  margin: 12px;
+
+  text-align: start;
+  padding-left: 12px;
+  border: 1px;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+form textarea:nth-of-type(1) {
+  text-align: start;
+  min-height: 100px;
+}
+
+form input,
+textarea {
+  outline: 1px var(--appDet) solid;
+  background-color: transparent;
+}
+
+form button {
+  text-align: center;
+  background-color: var(--color-ocean);
+
+  border: 1px solid var(--color-ocean-secondary);
+  cursor: pointer;
+  color: wheat;
+  border-radius: 50px;
+}
+
+form button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+
+
+.form-actions {
+  width: min-content;
+}
+
+.page-title {
+  position: relative;
+  background-color: transparent;
+  text-align: start;
+  padding-left: 12px;
+  padding-block: 20px;
+  color: var(--text-normalColor);
+  display: block;
+  font-size: xx-large;
+}
+
+
+
+
+
+.dropdown-btn {
+  border: 1px solid grey;
+  background-image: url("../src/assets/three.svg");
+  background-size: cover;
+  position: relative;
+  top: 25px;
+  left: 4px;
+  z-index: 10;
+  height: 20px;
+  width: 20px;
+
+}
+
+.dropdown-btn:hover {
+  background-image: url("./src/assets/close.svg");
+  border: 1px solid transparent;
+
+}
+
+.dropdown {
+  border: 1pt solid grey;
+  width: fit-content;
+  padding: 10px 4px;
+
+  visibility: collapse;
+  background-color: var(--main-color);
+  backdrop-filter: blur(106.5);
+  box-shadow: 0px 0px 4px gray;
+
+}
+
+
+.dropdown li {
+  min-width: 150px;
+  padding: 4px;
+  padding-left: 12px;
+  border-radius: 20px;
+  list-style: none;
+  border-radius: var(--radius-curve);
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.dropdown li span {
+  vertical-align: middle;
+
+}
+
+.dropdown li span img {
+  height: 25px;
+  vertical-align: middle;
+  padding-bottom: 5px;
+  padding-right: 4px;
+}
+
+.dropdown li:hover {
+  background-color: var(--color-ocean);
+  color: white;
+}
+
+.dropdown-btn:hover>.dropdown {
+  visibility: visible;
+
+}
+
+#feedback-res {
+  background-color: #c30000;
+  vertical-align: middle;
+  text-align: center;
+  padding: 20px;
+  border-radius: 2px;
+  position: fixed;
+  bottom: 20px;
+  left: 12px;
+  display: inline-block;
+  z-index: 200;
+  visibility: collapse;
+
+  font-style: normal;
+  font-weight: 400;
+  color: white;
+  box-sizing: border-box;
+}
+
+#feedback-res span img {
+  margin-bottom: 4px;
+  vertical-align: middle;
+}
+
+
+
+
+/* --- 4. Form Styling (Cleaned Up) --- */
+
+
+/* --- 5. Navigation & UI Elements --- */
+
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  background: var(--color-sky-white-secondary);
+  color: var(--appNameColor);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  padding: 14px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #b30404;
+  color: white;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.notes-wrapper {
+
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-basis: content;
+  flex-flow: wrap;
+  flex-shrink: inherit;
+}
+
+.homepage {
+  margin-top: 120px;
+  margin-inline: 0;
+}
+
+.readme {
+
+  padding: 20px;
+  padding-left: 62px;
+  margin-top: -119px;
+
+  border-radius: 2px;
+
+
+  width: 100vw;
+
+
+
+}
+
+.readme hr {
+  margin-block: 10px;
+}
+
+.readme h2 {
+  margin: 2px;
+}

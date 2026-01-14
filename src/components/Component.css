@@ -1,0 +1,243 @@
+* {
+
+
+  border-radius: 8px;
+  box-sizing: border-box;
+  max-width: 98vw;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --radius-normal: 16px;
+  --radius-curve: 20px;
+
+  --main-color: #ffffff;
+  --appNameColor: black;
+  --appDet: #909193;
+  --text-normalColor: black;
+  /* Deep Blue - for headers, nav */
+  --main-color-secondary: #fdfdfd;
+  /* Slightly lighter for hover states or buttons */
+
+  --color-ocean: #3b9aff;
+  /* Primary action button color */
+  --color-ocean-secondary: #468faf;
+  /* Card headers, tags */
+
+  --color-sky: #61a5c2;
+  /* Backgrounds, secondary buttons */
+  --color-sky-secondary: #89c2d9;
+  /* Input borders, light hovers */
+
+  --color-sky-white: #a9d6e5;
+  /* Light background, section separators */
+  --color-sky-white-secondary: #caf0f8;
+  /* Highlight boxes, hover areas */
+
+  --color-light: #f9f9f9;
+  /* Very light background — almost white but blue-tinted */
+  --color-single-note-bg: #ffffff;
+
+  --info-container-bg: #b0b0b03b;
+}
+
+[data-theme='dark'] {
+  /* Core Backgrounds - using "Elevated" dark grays */
+  --main-color: #121212;
+  /* Deepest background */
+  --main-color-secondary: #1e1e1e;
+  /* Slightly lighter for sections */
+  --color-single-note-bg: #252525;
+  /* Note/Card backgrounds */
+  --color-light: #181818;
+  /* Blue-tinted dark */
+
+  /* Text Colors */
+  --appNameColor: #ffffff;
+  --text-normalColor: #e0e0e0;
+  /* Soft white for better readability */
+  --appDet: #a0a0a0;
+  /* Muted text */
+
+  /* Ocean/Sky Blue Palette - adjusted for Dark Mode saturation */
+  --color-ocean: #4dabff;
+  /* Brighter blue to pop against dark */
+  --color-ocean-secondary: #52b1d6;
+
+  --color-sky: #3d5afe;
+  --color-sky-secondary: #2c3e50;
+
+  --color-sky-white: #2a2d2e;
+  /* Swapped: dark grey with blue tint */
+  --color-sky-white-secondary: #323739;
+
+  /* Status and Containers */
+  --info-container-bg: rgba(255, 255, 255, 0.1);
+  /* Transparent white overlay */
+}
+
+@keyframes modeAnim {
+  from {
+    transform: rotate(0deg);
+    border-radius: 50%;
+  }
+
+  to {
+    transform: rotate(360deg);
+    border-radius: 50%;
+  }
+}
+
+
+
+#mode {
+  background-color: transparent;
+  position: fixed;
+  bottom: 12px;
+  left: 8px;
+  width: fit-content;
+
+  padding: 2px;
+  padding-top: 4px;
+  border-radius: 40px;
+
+  cursor: pointer;
+
+  filter: brightness(1.05);
+border: 1px solid var(--color-sky-secondary);
+}
+#mode:hover{
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.634);
+}
+
+
+#add-note {
+  position: fixed;
+  /* stay fixed */
+  bottom: 36px;
+  /* distance from top */
+  right: 12px;
+  user-select: none;
+  /* distance from right */
+  height: 60px;
+  width: fit-content;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(40deg,
+      var(--color-ocean) 10%,
+      var(--color-sky) 90%);
+  border-radius: 14px;
+  backdrop-filter: blur(120.5);
+
+
+
+
+  z-index: 999;
+}
+
+#add-note i {
+  margin-right: 6px;
+  margin-top: 2px;
+
+}
+
+#add-note:hover {
+  background-color: var(--color-ocean-secondary);
+  scale: 1.05;
+  cursor: pointer;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.634);
+}
+
+#add-note span {
+  margin-right: 2px;
+
+}
+
+#add-note img {
+  margin-right: 12px;
+
+
+}
+
+.card-body {
+  background-color: transparent;
+}
+
+#user-title {
+  background-color: transparent;
+}
+
+.card-text {
+  background-color: transparent;
+}
+
+/*Nothing Element */
+
+/* Container to center the card on the screen */
+.empty-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  position: relative;
+  top: 200px;
+}
+
+/* The Card Wrapper */
+.empty-card {
+  background-color: var(--main-color);
+  border-radius: 12px;
+
+  max-width: 480px;
+  width: 100%;
+  color: var(--text-normalColor);
+  border: 1px solid var(--color-sky-white);
+  overflow: hidden;
+}
+
+.empty-card-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.empty-card-title {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+
+}
+
+.empty-card-text {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Custom Button Styling */
+.btn-add-note {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-right: 112px;
+  width: fit-content;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-note:hover {
+  background-color: #0056b3;
+}
