@@ -230,7 +230,8 @@ html {
   animation-iteration-count: 1;
 
 }
-li .icon{
+
+li .icon {
   box-sizing: border-box;
   padding-top: 1px;
 }
@@ -254,10 +255,10 @@ li .icon{
 
 }
 
-#app-det {
+#app-det{
   margin-top: -2px;
   border-radius: 0px;
-
+font-size: 0.5rem;
   padding-block: 2px;
   color: var(--appDet);
   display: block;
@@ -385,7 +386,6 @@ input {
 
   background: transparent;
   text-align: start !important;
-
   backdrop-filter: blur(100.5px);
   width: fit-content;
   margin-inline: auto;
@@ -405,6 +405,10 @@ input {
   animation-iteration-count: 1;
   box-sizing: border-box;
   padding: 20px;
+  overflow: hidden;
+  max-height: fit-content;
+
+
 }
 
 #editor {
@@ -414,36 +418,36 @@ input {
 #form-container form,
 #editor form {
   display: flex;
-
   box-sizing: border-box;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  margin-bottom: 60px;
+
 }
 
+
 #form-container form label,
-#editor form label {
-  text-align: start;
-  justify-self: flex-start;
-  padding-left: 12px;
-  width: 100%;
-}
+#editor form label {}
+
+
 
 form input,
 form textarea,
 button {
   height: fit-content;
   width: fit-content;
-  max-width: 95vw;
-  min-width: 400px;
+
+  min-width: 100%;
   min-height: 52px;
-  margin: 12px;
+
 
   text-align: start;
-  padding-left: 12px;
+
   border: 1px;
   border-radius: 4px;
   padding: 8px;
+  margin: 4px;
 }
 
 form textarea:nth-of-type(1) {
@@ -465,7 +469,11 @@ form button {
   cursor: pointer;
   color: wheat;
   border-radius: 50px;
+  width: 100%;
+margin-left: -14px;
+  width: fit-content;
 }
+
 
 form button:hover {
   opacity: 0.9;
@@ -504,6 +512,11 @@ form button:hover {
   height: 20px;
   width: 20px;
 
+}
+
+form input,
+form textarea {
+  min-width: 90%;
 }
 
 .dropdown-btn:hover {
@@ -652,4 +665,36 @@ form button:hover {
 
 .readme h2 {
   margin: 2px;
+}
+
+@media screen and (max-width : 500px) {
+
+  form button {
+    background: #000;
+    margin-left: -0.5rem;
+  }
+
+  #form-container,
+  #editor {
+    
+   
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    top: 128px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    margin: 4px;
+   
+
+  }
+  #app-det{
+ display: none;
+
+}
+
+
+
+
 }

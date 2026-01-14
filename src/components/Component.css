@@ -109,10 +109,11 @@
   cursor: pointer;
 
   filter: brightness(1.05);
-border: 1px solid var(--color-sky-secondary);
+  border: 1px solid var(--color-sky-secondary);
 }
-#mode:hover{
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.634);
+
+#mode:hover {
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.634);
 }
 
 
