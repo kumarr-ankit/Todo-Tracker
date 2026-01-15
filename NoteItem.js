@@ -1,19 +1,17 @@
 class NoteItem {
-  id = crypto.randomUUID();
+ 
   title;
   desc;
-  dueAt;
-  createdAt;
+  due_at;
+  created_at;
   constructor(title, desc, dueAt, createdAt) {
     this.title = title;
     this.desc = desc;
-    this.createdAt = createdAt;
-    this.dueAt = dueAt;
+    this.created_at = createdAt;
+    this.due_at = dueAt;
   }
 
-  getId() {
-    return this.id;
-  }
+ 
 
   getTitle() {
     return this.title;
@@ -32,19 +30,19 @@ class NoteItem {
   }
 
   getDueAt() {
-    return this.dueAt;
+    return this.due_at;
   }
 
   setDueAt(dueAt) {
-    this.dueAt = dueAt;
+    this.due_at = dueAt;
   }
 
   getCreatedAt() {
-    return this.createdAt;
+    return this.created_at;
   }
 
   setCreatedAt(createdAt) {
-    this.createdAt = createdAt;
+    this.created_at = createdAt;
   }
 }
 export default NoteItem
