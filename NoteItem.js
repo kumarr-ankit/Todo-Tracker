@@ -4,11 +4,11 @@ class NoteItem {
   desc;
   due_at;
   created_at;
-  constructor(title, desc, dueAt, createdAt) {
+  constructor(title, desc, dueAt) {
     this.title = title;
     this.desc = desc;
-    this.created_at = createdAt;
-    this.due_at = dueAt;
+    this.created_at = new Date().toLocaleDateString("en-CA");
+    this.due_at =  dueAt;
   }
 
  
