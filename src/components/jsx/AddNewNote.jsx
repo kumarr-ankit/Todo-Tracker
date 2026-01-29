@@ -1,21 +1,18 @@
 import React from "react";
-import "./Component.css";
-
- 
+import "../css/Component.css";
+import { NotebookPenIcon, PenBox, Pencil, Plus } from "lucide-react";
 
 function AddNewNote({ showForm, setShowFrom }) {
   function addNewNote() {
-    console.log("New Note added. ✅");
     setShowFrom(!showForm);
   }
 
-  console.log("Form Showed👋");
   return (
     <div onClick={addNewNote}>
       <div id="add-note">
-        <i className="fa-solid fa-white fa-note-sticky"></i>
         
-        
+       
+        <NotebookPenIcon size={'18px'}  />
         
         <span id="add-note-span">Add new todo</span>
       </div>

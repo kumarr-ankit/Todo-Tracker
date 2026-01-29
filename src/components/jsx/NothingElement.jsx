@@ -1,6 +1,6 @@
 import React from "react";
-import "./Component.css";
-import "../App.css";
+import "../css/Component.css";
+import "../../App.css";
 import AddNewNote from "./AddNewNote";
 import ModeBtn from "./ModeBtn";
 

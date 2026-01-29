@@ -1,4 +1,3 @@
-
 :root {
   --radius-normal: 16px;
   --radius-curve: 20px;
@@ -69,24 +68,34 @@
 }
 
 
-.splash-container{
-    background-color: var(--main-color);
-    width: 100vw;
-
-    margin: 0;
-    
-    position: static;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.splash-container {
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2px;
+  justify-self: center;
+  position: fixed;
+  bottom: 50%;
+  top: 50%;
 }
 
-.splash-text{
-    color: var(--color-ocean);
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+.splash-text {
+  color: gray;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: x-small;
+  margin-top: -10px;
 }
-.dot{
-    display: none;
+
+.dot {
+  display: none;
+}
+
+.dark {
+  background-color: #161616;
+}
+
+.loaderIcon {
+  cursor: progress;
 }

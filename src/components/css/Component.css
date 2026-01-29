@@ -162,6 +162,8 @@
 
 #add-note span {
   margin-right: 2px;
+  margin-left: 2px;
+  text-align: center;
 
 }
 
@@ -241,4 +243,8 @@
 
 .btn-add-note:hover {
   background-color: #0056b3;
+}
+
+.edit{
+  position: relative;
 }

@@ -1,21 +1,24 @@
 import React from "react";
-import "./Splash.css";
-import loadingAnim from "./assets/Loading.json";
+import "../css/Splash.css";
+import loadingAnim from "../../assets/Loading.json";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
-function Splash() {
+function Splash({ mode }) {
+ 
+  let modeClass = mode == "true" ? "dark" : "";
 
-
+ 
   return (
-    <div className="splash-container">
+    <div className={`splash-container ${modeClass}`}>
       <Player
         autoplay
         loop
         src={loadingAnim}
+        className="loaderIcon"
         style={{ height: "100px", width: "100px" }}
       ></Player>
 
       <p className="splash-text">
-         Loading...
+        Loading.
         <span id="dot" className="splash-text dot">
           .
         </span>

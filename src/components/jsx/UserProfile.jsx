@@ -1,5 +1,5 @@
 import React from "react";
-import "./Component.css";
+import "../css/Component.css";
 import { LogOut, UserRoundX } from "lucide-react";
 import { UserBlockIcon } from "@hugeicons/core-free-icons";
 import ModeBtn from "./ModeBtn";
@@ -9,8 +9,8 @@ function UserProfile() {
     <div>
       {" "}
       <div id="show-as">
-        <i className="fa-solid fa-user"></i>
-        <ul>
+       <ModeBtn className="icon"/>
+        {/* <ul>
           <li id="log-out" className="menu-item">
             <LogOut height={"14px"} className="icon"/>
             Log out
@@ -19,9 +19,9 @@ function UserProfile() {
             <UserRoundX height={"14px"} className="icon"/>
             Delete your account
           </li>
-          <li className="menu-item"><ModeBtn className="icon"/>
+          <li className="menu-item">
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

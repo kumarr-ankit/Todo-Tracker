@@ -1,5 +1,5 @@
 import React from "react";
-import "./Component.css";
+import "../css/Component.css";
 
 function EditForm() {
   return (

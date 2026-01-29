@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Component.css";
+import "../css/Component.css";
 import { Camera, MoonStar, Sun } from "lucide-react";
 function ModeBtn() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(localStorage.getItem("mode")==='true');
 
   // Apply the theme attribute to the <html> tag
   useEffect(() => {
@@ -14,19 +14,26 @@ function ModeBtn() {
     }, 1);
   }, [isDark]);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  const toggleTheme = () => {
+    setIsDark((p) => {
+    
+     localStorage.setItem("mode", !p);
+     return !p;
+    });
+   
+  };
 
   function changeMode() {
     toggleTheme();
   }
   return (
-    <div onClick={changeMode}>
+    <div className="modeBtn" onClick={changeMode}>
       {isDark ? (
-        <Sun color="white" height={"14px"} className="icon" />
+        <Sun color="white" height={"18px"} className="icon" />
       ) : (
-        <MoonStar color="black" height={"14px"} className="icon" />
+        <MoonStar color="black" height={"18px"} className="icon" />
       )}
-      Change {isDark ? "light" : "dark"} mode{" "}
+      {/* Change {isDark ? "light" : "dark"} mode{" "} */}
     </div>
   );
 }
